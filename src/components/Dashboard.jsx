@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   ClipboardCheck, 
   AlertTriangle, 
@@ -16,6 +16,15 @@ export default function Dashboard() {
   const [filtroEstado, setFiltroEstado] = useState('todas');
   
   const stats = getEstadisticas();
+  
+  // Scroll al inicio cuando se selecciona una inspección
+  useEffect(() => {
+    if (selectedInspeccion) {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, [selectedInspeccion]);
   
   const inspeccionesFiltradas = mockInspecciones.filter(insp => {
     if (filtroEstado === 'todas') return true;

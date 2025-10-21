@@ -23,7 +23,10 @@ import FotosGallery from './FotosGallery';
 export default function InspeccionDetalle({ inspeccion, onClose }) {
   // Scroll al inicio cuando se abre la inspección
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll inmediato y forzado al inicio
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, []);
 
   const getEstadoConfig = () => {
