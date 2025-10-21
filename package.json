@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://jmarinr.github.io/henkancx-dashboard",
+  "homepage": "https://mvp-dashboard.henkancx.com",
   "description": "Dashboard de monitoreo y gestión de inspecciones HenkanCX Synk",
   "scripts": {
     "dev": "vite",
