@@ -60,67 +60,67 @@ export default function Dashboard() {
 
         {/* Estadísticas */}
         <div className="space-y-3 sm:space-y-4 lg:space-y-6 mb-6 sm:mb-8">
-          {/* Total Inspecciones - Ocupa todo el ancho */}
-          <div className="bg-gray-900 dark:bg-gray-800 rounded-xl p-5 sm:p-6 border border-gray-700 shadow-lg">
-            <div className="flex items-center justify-between mb-4">
-              <ClipboardCheck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" />
-              <div className="text-right">
-                <p className="text-4xl sm:text-5xl font-bold text-white">{stats.total}</p>
-                <p className="text-sm text-gray-300">Total</p>
+          {/* Fila Superior: Total y Normal */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+            {/* Total Inspecciones */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 border-2 border-blue-500 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <ClipboardCheck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-500" />
+                <div className="text-right">
+                  <p className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">Total</p>
+                </div>
+              </div>
+              <div className="flex items-center justify-between text-sm pt-4 border-t border-blue-200 dark:border-gray-700">
+                <span className="text-gray-600 dark:text-gray-300">Completadas</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">{stats.porcentajeCompletado}%</span>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm pt-4 border-t border-gray-700">
-              <span className="text-gray-300">Completadas</span>
-              <span className="font-bold text-blue-400 text-lg">{stats.porcentajeCompletado}%</span>
+
+            {/* Equipos Normales */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 border-2 border-green-500 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
+                <div className="text-right">
+                  <p className="text-4xl sm:text-5xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Normal</p>
+                </div>
+              </div>
+              <div className="text-sm pt-4 border-t border-green-200 dark:border-gray-700">
+                <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
+              </div>
             </div>
           </div>
 
-          {/* Grid 2x2 para estados */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+          {/* Fila Inferior: Crítico y Atención */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
             {/* Equipos Críticos */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-red-500 shadow-md">
-              <div className="flex items-center justify-between mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 border-2 border-red-500 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
                 <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-red-500" />
                 <div className="text-right">
-                  <p className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Crítico</p>
+                  <p className="text-4xl sm:text-5xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Crítico</p>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
+              <div className="text-sm pt-4 border-t border-red-200 dark:border-gray-700">
                 <span className="text-gray-600 dark:text-gray-400 font-medium">Atención urgente</span>
               </div>
             </div>
 
             {/* Requieren Atención */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-yellow-500 shadow-md">
-              <div className="flex items-center justify-between mb-3">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 border-2 border-yellow-500 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
                 <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-600 dark:text-yellow-500" />
                 <div className="text-right">
-                  <p className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Atención</p>
+                  <p className="text-4xl sm:text-5xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Atención</p>
                 </div>
               </div>
-              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
+              <div className="text-sm pt-4 border-t border-yellow-200 dark:border-gray-700">
                 <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
               </div>
             </div>
-
-            {/* Equipos Normales */}
-            <div className="col-span-2 sm:col-span-1 bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-green-500 shadow-md">
-              <div className="flex items-center justify-between mb-3">
-                <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
-                <div className="text-right">
-                  <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Normal</p>
-                </div>
-              </div>
-              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
-                <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
-              </div>
-            </div>
-
-            {/* Placeholder para mantener grid 2x2 en móvil */}
-            <div className="sm:hidden"></div>
           </div>
         </div>
 
