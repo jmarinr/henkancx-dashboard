@@ -63,53 +63,55 @@ export default function InspeccionCard({ inspeccion, onClick }) {
   return (
     <div
       onClick={onClick}
-      className={`bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-all cursor-pointer border ${getBorderColor()}`}
+      className={`bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md active:shadow-lg transition-all cursor-pointer border ${getBorderColor()} min-h-[180px] sm:min-h-0`}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+      <div className="flex items-start justify-between mb-3 sm:mb-4">
+        <div className="min-w-0 flex-1">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1 truncate">
             {inspeccion.id}
           </h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">
             {inspeccion.otId}
           </p>
         </div>
-        {getEstadoBadge()}
+        <div className="ml-2 flex-shrink-0">
+          {getEstadoBadge()}
+        </div>
       </div>
 
       {/* Información Principal */}
-      <div className="space-y-2.5 mb-4">
+      <div className="space-y-2 sm:space-y-2.5 mb-3 sm:mb-4">
         <div className="flex items-center text-sm text-gray-900 dark:text-white">
-          <Building2 className="w-4 h-4 mr-2.5 text-gray-400" />
-          <span className="font-medium">{inspeccion.cliente}</span>
+          <Building2 className="w-4 h-4 mr-2 sm:mr-2.5 text-gray-400 flex-shrink-0" />
+          <span className="font-medium truncate">{inspeccion.cliente}</span>
         </div>
         
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <MapPin className="w-4 h-4 mr-2.5 text-gray-400" />
-          {inspeccion.sitio}
+        <div className="flex items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <MapPin className="w-4 h-4 mr-2 sm:mr-2.5 text-gray-400 flex-shrink-0" />
+          <span className="truncate">{inspeccion.sitio}</span>
         </div>
         
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <User className="w-4 h-4 mr-2.5 text-gray-400" />
-          {inspeccion.tecnico}
+        <div className="flex items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <User className="w-4 h-4 mr-2 sm:mr-2.5 text-gray-400 flex-shrink-0" />
+          <span className="truncate">{inspeccion.tecnico}</span>
         </div>
 
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <Calendar className="w-4 h-4 mr-2.5 text-gray-400" />
-          {format(new Date(inspeccion.fecha), "dd/MM/yyyy HH:mm", { locale: es })}
+        <div className="flex items-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <Calendar className="w-4 h-4 mr-2 sm:mr-2.5 text-gray-400 flex-shrink-0" />
+          <span className="truncate">{format(new Date(inspeccion.fecha), "dd/MM/yyyy HH:mm", { locale: es })}</span>
         </div>
       </div>
 
       {/* Equipo Info */}
       {inspeccion.marcaPlanta && (
-        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 mb-4 border border-gray-200 dark:border-gray-600">
-          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Equipo</p>
-          <p className="text-sm font-semibold text-gray-900 dark:text-white">
+        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-2.5 sm:p-3 mb-3 sm:mb-4 border border-gray-200 dark:border-gray-600">
+          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1 sm:mb-1.5">Equipo</p>
+          <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">
             {inspeccion.marcaPlanta} {inspeccion.modeloPlanta}
           </p>
           {inspeccion.capacidadKW && (
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1.5">
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 sm:mt-1.5 truncate">
               {inspeccion.capacidadKW} KW - {inspeccion.hodometro} horas
             </p>
           )}
@@ -118,32 +120,33 @@ export default function InspeccionCard({ inspeccion, onClick }) {
 
       {/* IA Insights */}
       {inspeccion.iaResult && (
-        <div className="space-y-2 mb-4">
+        <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4">
           {inspeccion.iaResult.alarmas.length > 0 && (
             <div className="flex items-start text-xs text-red-700 dark:text-red-400">
               <AlertCircle className="w-3.5 h-3.5 mr-1.5 mt-0.5 flex-shrink-0" />
-              <span>{inspeccion.iaResult.alarmas.length} alarma(s) detectada(s)</span>
+              <span className="line-clamp-1">{inspeccion.iaResult.alarmas.length} alarma(s) detectada(s)</span>
             </div>
           )}
           {inspeccion.iaResult.reemplazos.length > 0 && (
             <div className="flex items-start text-xs text-yellow-700 dark:text-yellow-400">
               <AlertTriangle className="w-3.5 h-3.5 mr-1.5 mt-0.5 flex-shrink-0" />
-              <span>{inspeccion.iaResult.reemplazos.length} reemplazo(s) requerido(s)</span>
+              <span className="line-clamp-1">{inspeccion.iaResult.reemplazos.length} reemplazo(s) requerido(s)</span>
             </div>
           )}
         </div>
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-        <div className="text-xs text-gray-500 dark:text-gray-400">
+      <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="text-xs text-gray-500 dark:text-gray-400 truncate">
           {inspeccion.duracion ? `Duración: ${inspeccion.duracion} min` : 'Sin completar'}
           {inspeccion.fotosUrls && inspeccion.fotosUrls.length > 0 && (
             <span className="ml-2">• {inspeccion.fotosUrls.length} fotos</span>
           )}
         </div>
-        <button className="flex items-center text-sm font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
-          Ver detalle
+        <button className="flex items-center text-xs sm:text-sm font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 flex-shrink-0 ml-2">
+          <span className="hidden sm:inline">Ver detalle</span>
+          <span className="sm:hidden">Ver</span>
           <ChevronRight className="w-4 h-4 ml-1" />
         </button>
       </div>
