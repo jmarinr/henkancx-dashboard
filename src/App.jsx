@@ -2,7 +2,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
-import Analytics from './components/Analytics';
+import Analitica from './components/Analitica';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -25,8 +25,8 @@ function App() {
     window.history.pushState = function(...args) {
       originalPushState.apply(this, args);
       const path = args[2];
-      if (path === '/analytics') {
-        window.location.hash = 'analytics';
+      if (path === '/analitica') {
+        window.location.hash = 'analitica';
       } else if (path === '/') {
         window.location.hash = 'dashboard';
       }
@@ -36,7 +36,11 @@ function App() {
   return (
     <ThemeProvider>
       <Header />
-      {currentPage === 'analytics' ? <Analytics /> : <Dashboard />}
+      {currentPage === 'analitica' ? (
+        <Analitica onBack={() => window.location.hash = 'dashboard'} />
+      ) : (
+        <Dashboard />
+      )}
     </ThemeProvider>
   );
 }

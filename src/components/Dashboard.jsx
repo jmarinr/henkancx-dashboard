@@ -91,13 +91,13 @@ export default function Dashboard() {
             </p>
           </div>
           <button
-            onClick={() => window.location.hash = 'analytics'}
+            onClick={() => window.location.hash = 'analitica'}
             className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm hover:shadow-md text-sm font-medium flex-shrink-0"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <span className="hidden sm:inline">Analíticas</span>
+            <span className="hidden sm:inline">Analítica</span>
           </button>
         </div>
 
@@ -121,8 +121,8 @@ export default function Dashboard() {
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-blue-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">del total</span>
-                <span className="font-bold text-blue-600 dark:text-blue-400">{stats.total}</span>
+                <span className="text-gray-600 dark:text-gray-300">De {stats.total} totales</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
               </div>
             </div>
           </button>
