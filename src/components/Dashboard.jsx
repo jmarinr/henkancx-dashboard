@@ -93,7 +93,14 @@ export default function Dashboard() {
         {/* Estadísticas */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
           {/* Total Inspecciones */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+          <button
+            onClick={() => setFiltroEstado('todas')}
+            className={`bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 shadow-sm hover:shadow-md transition-all text-left ${
+              filtroEstado === 'todas' 
+                ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-800' 
+                : 'border-blue-500 hover:border-blue-600'
+            }`}
+          >
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
               <div className="text-right">
@@ -107,10 +114,17 @@ export default function Dashboard() {
                 <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
               </div>
             </div>
-          </div>
+          </button>
 
           {/* Equipos Críticos */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-red-500 shadow-sm hover:shadow-md transition-shadow">
+          <button
+            onClick={() => setFiltroEstado('critico')}
+            className={`bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 shadow-sm hover:shadow-md transition-all text-left ${
+              filtroEstado === 'critico' 
+                ? 'border-red-500 ring-2 ring-red-200 dark:ring-red-800' 
+                : 'border-red-500 hover:border-red-600'
+            }`}
+          >
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0" />
               <div className="text-right">
@@ -121,10 +135,17 @@ export default function Dashboard() {
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-red-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">Urgente</span>
             </div>
-          </div>
+          </button>
 
           {/* Requieren Atención */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-yellow-500 shadow-sm hover:shadow-md transition-shadow">
+          <button
+            onClick={() => setFiltroEstado('atencion')}
+            className={`bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 shadow-sm hover:shadow-md transition-all text-left ${
+              filtroEstado === 'atencion' 
+                ? 'border-yellow-500 ring-2 ring-yellow-200 dark:ring-yellow-800' 
+                : 'border-yellow-500 hover:border-yellow-600'
+            }`}
+          >
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
               <div className="text-right">
@@ -135,10 +156,17 @@ export default function Dashboard() {
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-yellow-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
             </div>
-          </div>
+          </button>
 
           {/* Equipos Normales */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+          <button
+            onClick={() => setFiltroEstado('normal')}
+            className={`bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 shadow-sm hover:shadow-md transition-all text-left ${
+              filtroEstado === 'normal' 
+                ? 'border-green-500 ring-2 ring-green-200 dark:ring-green-800' 
+                : 'border-green-500 hover:border-green-600'
+            }`}
+          >
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-500 flex-shrink-0" />
               <div className="text-right">
@@ -149,7 +177,7 @@ export default function Dashboard() {
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-green-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">OK</span>
             </div>
-          </div>
+          </button>
         </div>
 
         {/* Barra de Búsqueda */}
