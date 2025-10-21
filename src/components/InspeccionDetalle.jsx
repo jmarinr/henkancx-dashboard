@@ -17,9 +17,15 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { useEffect } from 'react';
 import FotosGallery from './FotosGallery';
 
 export default function InspeccionDetalle({ inspeccion, onClose }) {
+  // Scroll al inicio cuando se abre la inspección
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const getEstadoConfig = () => {
     switch (inspeccion.estadoEquipo) {
       case 'critico': 
