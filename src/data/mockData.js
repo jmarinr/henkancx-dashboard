@@ -46,7 +46,13 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Generador en excelente estado. Mantenimiento preventivo completado.',
-    fotos: 4
+    fotos: 4,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&q=80'
+    ]
   },
   {
     id: 'INS-2025-002',
@@ -110,7 +116,13 @@ export const mockInspecciones = [
     },
     
     observaciones: 'ATENCIÓN URGENTE: Múltiples fallas críticas detectadas. Se requiere intervención correctiva urgente.',
-    fotos: 4
+    fotos: 4,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
+      'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
+      'https://images.unsplash.com/photo-1621905252472-8d0e15f7ebcc?w=800&q=80',
+      'https://images.unsplash.com/photo-1621905252868-b93c28c0567f?w=800&q=80'
+    ]
   },
   {
     id: 'INS-2025-003',
@@ -157,7 +169,12 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Generador operativo. Se detectó ligera variación en voltaje L1. Requiere seguimiento.',
-    fotos: 3
+    fotos: 3,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&q=80'
+    ]
   },
   {
     id: 'INS-2025-004',
@@ -239,7 +256,13 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Equipo nuevo en excelente condiciones. Todas las pruebas exitosas.',
-    fotos: 4
+    fotos: 4,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
+      'https://images.unsplash.com/photo-1621905252472-8d0e15f7ebcc?w=800&q=80',
+      'https://images.unsplash.com/photo-1621905252868-b93c28c0567f?w=800&q=80',
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'
+    ]
   }
 ];
 

@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import FotosGallery from './FotosGallery';
 
 export default function InspeccionDetalle({ inspeccion, onClose }) {
   const getEstadoConfig = () => {
@@ -283,6 +284,13 @@ export default function InspeccionDetalle({ inspeccion, onClose }) {
                 </div>
               )}
             </div>
+          </div>
+        )}
+
+        {/* GALERÍA DE FOTOS */}
+        {inspeccion.fotosUrls && inspeccion.fotosUrls.length > 0 && (
+          <div className="mt-6">
+            <FotosGallery fotos={inspeccion.fotosUrls} />
           </div>
         )}
 

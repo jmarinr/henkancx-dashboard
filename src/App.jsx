@@ -5,10 +5,8 @@ import Dashboard from './components/Dashboard';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-gray-900">
-        <Header />
-        <Dashboard />
-      </div>
+      <Header />
+      <Dashboard />
     </ThemeProvider>
   );
 }
