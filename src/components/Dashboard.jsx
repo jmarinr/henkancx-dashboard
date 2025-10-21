@@ -81,22 +81,33 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-2">
-            Panel de Control
-          </h1>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-            Monitoreo de inspecciones de generadores eléctricos
-          </p>
+        <div className="mb-6 sm:mb-8 flex items-start justify-between">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-2">
+              Panel de Control
+            </h1>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+              Monitoreo de inspecciones de generadores eléctricos
+            </p>
+          </div>
+          <button
+            onClick={() => window.location.hash = 'analytics'}
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors shadow-sm hover:shadow-md text-sm font-medium flex-shrink-0"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <span className="hidden sm:inline">Analíticas</span>
+          </button>
         </div>
 
         {/* Estadísticas */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
-          {/* Total Inspecciones */}
+          {/* Completadas */}
           <button
-            onClick={() => setFiltroEstado('todas')}
+            onClick={() => setFiltroEstado('completadas')}
             className={`bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 shadow-sm hover:shadow-md transition-all text-left ${
-              filtroEstado === 'todas' 
+              filtroEstado === 'completadas' 
                 ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-800' 
                 : 'border-blue-500 hover:border-blue-600'
             }`}
@@ -104,14 +115,14 @@ export default function Dashboard() {
             <div className="flex items-center justify-between mb-1.5 sm:mb-2">
               <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
-                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300">Total</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{stats.completadas}</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300">Completadas</p>
               </div>
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-blue-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">Completadas</span>
-                <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
+                <span className="text-gray-600 dark:text-gray-300">del total</span>
+                <span className="font-bold text-blue-600 dark:text-blue-400">{stats.total}</span>
               </div>
             </div>
           </button>
