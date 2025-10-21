@@ -61,15 +61,15 @@ export default function Dashboard() {
         {/* Estadísticas */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
           {/* Total Inspecciones */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-between mb-2">
-              <ClipboardCheck className="w-5 h-5 text-blue-500 flex-shrink-0" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-300">Total</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300">Total</p>
               </div>
             </div>
-            <div className="text-xs pt-2 border-t border-blue-200 dark:border-gray-700">
+            <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-blue-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <span className="text-gray-600 dark:text-gray-300">Completadas</span>
                 <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
@@ -78,43 +78,43 @@ export default function Dashboard() {
           </div>
 
           {/* Equipos Críticos */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-red-500 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-between mb-2">
-              <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-red-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Crítico</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Crítico</p>
               </div>
             </div>
-            <div className="text-xs pt-2 border-t border-red-200 dark:border-gray-700">
+            <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-red-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">Urgente</span>
             </div>
           </div>
 
           {/* Requieren Atención */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-yellow-500 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-between mb-2">
-              <Activity className="w-5 h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-yellow-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Atención</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Atención</p>
               </div>
             </div>
-            <div className="text-xs pt-2 border-t border-yellow-200 dark:border-gray-700">
+            <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-yellow-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
             </div>
           </div>
 
           {/* Equipos Normales */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-green-500 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-500 flex-shrink-0" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-2.5 sm:p-4 border-2 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Normal</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Normal</p>
               </div>
             </div>
-            <div className="text-xs pt-2 border-t border-green-200 dark:border-gray-700">
+            <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-green-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">OK</span>
             </div>
           </div>
