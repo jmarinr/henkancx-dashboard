@@ -59,17 +59,17 @@ export default function Dashboard() {
         </div>
 
         {/* Estadísticas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6">
           {/* Total Inspecciones */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-blue-500 shadow-md">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <ClipboardCheck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <ClipboardCheck className="w-5 h-5 text-blue-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">Total</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-300">Total</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-blue-200 dark:border-gray-700">
+            <div className="text-xs pt-2 border-t border-blue-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <span className="text-gray-600 dark:text-gray-300">Completadas</span>
                 <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
@@ -77,56 +77,56 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Equipos Normales */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-green-500 shadow-md">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
-              <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Normal</p>
-              </div>
-            </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-green-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
-            </div>
-          </div>
-
           {/* Equipos Críticos */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-red-500 shadow-md">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-red-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-red-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Crítico</p>
+                <p className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Crítico</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-red-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Atención urgente</span>
+            <div className="text-xs pt-2 border-t border-red-200 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Urgente</span>
             </div>
           </div>
 
           {/* Requieren Atención */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-yellow-500 shadow-md">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-600 dark:text-yellow-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-yellow-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <Activity className="w-5 h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
               <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Atención</p>
+                <p className="text-2xl sm:text-3xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Atención</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-yellow-200 dark:border-gray-700">
+            <div className="text-xs pt-2 border-t border-yellow-200 dark:border-gray-700">
               <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
+            </div>
+          </div>
+
+          {/* Equipos Normales */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border-2 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-500 flex-shrink-0" />
+              <div className="text-right">
+                <p className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Normal</p>
+              </div>
+            </div>
+            <div className="text-xs pt-2 border-t border-green-200 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">OK</span>
             </div>
           </div>
         </div>
 
         {/* Filtros */}
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap gap-2">
           <button
             onClick={() => setFiltroEstado('todas')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'todas'
-                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
@@ -134,9 +134,9 @@ export default function Dashboard() {
           </button>
           <button
             onClick={() => setFiltroEstado('completadas')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'completadas'
-                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
@@ -144,9 +144,9 @@ export default function Dashboard() {
           </button>
           <button
             onClick={() => setFiltroEstado('pendientes')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'pendientes'
-                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
@@ -154,9 +154,9 @@ export default function Dashboard() {
           </button>
           <button
             onClick={() => setFiltroEstado('critico')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'critico'
-                ? 'bg-red-600 text-white'
+                ? 'bg-red-600 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
@@ -164,9 +164,9 @@ export default function Dashboard() {
           </button>
           <button
             onClick={() => setFiltroEstado('atencion')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'atencion'
-                ? 'bg-yellow-600 text-white'
+                ? 'bg-yellow-600 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
@@ -174,9 +174,9 @@ export default function Dashboard() {
           </button>
           <button
             onClick={() => setFiltroEstado('normal')}
-            className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
               filtroEstado === 'normal'
-                ? 'bg-green-600 text-white'
+                ? 'bg-green-600 text-white shadow-md'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
