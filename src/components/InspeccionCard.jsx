@@ -138,6 +138,9 @@ export default function InspeccionCard({ inspeccion, onClick }) {
       <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
         <div className="text-xs text-gray-500 dark:text-gray-400">
           {inspeccion.duracion ? `Duración: ${inspeccion.duracion} min` : 'Sin completar'}
+          {inspeccion.fotosUrls && inspeccion.fotosUrls.length > 0 && (
+            <span className="ml-2">• {inspeccion.fotosUrls.length} fotos</span>
+          )}
         </div>
         <button className="flex items-center text-sm font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
           Ver detalle

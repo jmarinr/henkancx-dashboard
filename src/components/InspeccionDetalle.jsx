@@ -210,12 +210,34 @@ export default function InspeccionDetalle({ inspeccion, onClose }) {
           {/* DURACIÓN */}
           <Section title="Información de Servicio" icon={Clock}>
             <Field label="Duración Total" value={inspeccion.duracion} unit="minutos" highlight />
-            {inspeccion.fotos > 0 && (
-              <div className="flex items-center gap-2.5 p-3 bg-gray-50 dark:bg-gray-700/50 rounded border border-gray-200 dark:border-gray-600 mt-2">
-                <Camera className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  {inspeccion.fotos} evidencia(s) fotográfica(s) adjunta(s)
-                </span>
+            {inspeccion.fotosUrls && inspeccion.fotosUrls.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
+                  <Camera className="w-4 h-4" />
+                  Evidencias Fotográficas ({inspeccion.fotosUrls.length})
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {inspeccion.fotosUrls.map((url, idx) => (
+                    <a
+                      key={idx}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group aspect-video rounded overflow-hidden border border-gray-200 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                    >
+                      <img
+                        src={url}
+                        alt={`Evidencia ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-opacity flex items-center justify-center">
+                        <span className="text-white opacity-0 group-hover:opacity-100 text-xs font-medium">
+                          Ver imagen completa
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
             )}
           </Section>
