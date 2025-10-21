@@ -60,60 +60,60 @@ export default function Dashboard() {
 
         {/* Estadísticas */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
-          {/* Total Inspecciones */}
-          <div className="col-span-2 sm:col-span-1 bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <ClipboardCheck className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
+          {/* Total Inspecciones - Destacado */}
+          <div className="col-span-2 bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-lg p-5 sm:p-6 border border-gray-700 dark:border-gray-600 shadow-lg">
+            <div className="flex items-center justify-between mb-4">
+              <ClipboardCheck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">{stats.total}</p>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Total</p>
+                <p className="text-4xl sm:text-5xl font-bold text-white">{stats.total}</p>
+                <p className="text-sm sm:text-base text-gray-300">Total</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-xs sm:text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400">Completadas</span>
-              <span className="font-medium text-gray-900 dark:text-white">{stats.porcentajeCompletado}%</span>
+            <div className="flex items-center justify-between text-sm sm:text-base pt-4 border-t border-gray-700">
+              <span className="text-gray-300">Completadas</span>
+              <span className="font-bold text-blue-400 text-lg">{stats.porcentajeCompletado}%</span>
             </div>
           </div>
 
           {/* Equipos Críticos */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border-2 border-red-500 dark:border-red-600">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 dark:text-red-400" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-5 border-2 border-red-500 dark:border-red-600 shadow-md">
+            <div className="flex items-center justify-between mb-3">
+              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-red-500 dark:text-red-400" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-semibold text-red-600 dark:text-red-400">{stats.criticos}</p>
+                <p className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-400">{stats.criticos}</p>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Crítico</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400">Atención urgente</span>
+            <div className="text-xs sm:text-sm pt-3 border-t border-red-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Atención urgente</span>
             </div>
           </div>
 
           {/* Requieren Atención */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border border-yellow-500 dark:border-yellow-600">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <Activity className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600 dark:text-yellow-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-5 border-2 border-yellow-500 dark:border-yellow-600 shadow-md">
+            <div className="flex items-center justify-between mb-3">
+              <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-600 dark:text-yellow-500" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-semibold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                <p className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Atención</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400">Seguimiento</span>
+            <div className="text-xs sm:text-sm pt-3 border-t border-yellow-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
             </div>
           </div>
 
           {/* Equipos Normales */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-5 border-2 border-green-500 dark:border-green-600 shadow-md">
+            <div className="flex items-center justify-between mb-3">
+              <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
               <div className="text-right">
-                <p className="text-2xl sm:text-3xl font-semibold text-green-600 dark:text-green-500">{stats.normales}</p>
+                <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
                 <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Normal</p>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400">Operación estándar</span>
+            <div className="text-xs sm:text-sm pt-3 border-t border-green-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
             </div>
           </div>
         </div>
