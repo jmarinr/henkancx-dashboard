@@ -5,8 +5,7 @@ import {
   CheckCircle, 
   Clock,
   TrendingUp,
-  Activity,
-  Zap
+  Activity
 } from 'lucide-react';
 import { mockInspecciones, getEstadisticas } from '../data/mockData';
 import InspeccionCard from './InspeccionCard';
@@ -38,77 +37,74 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-            Dashboard de Inspecciones
+          <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">
+            Panel de Control
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Monitoreo y gestión de inspecciones de generadores
+            Monitoreo de inspecciones de generadores eléctricos
           </p>
         </div>
 
         {/* Estadísticas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Total Inspecciones */}
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <ClipboardCheck className="w-8 h-8" />
+              <ClipboardCheck className="w-6 h-6 text-gray-400" />
               <div className="text-right">
-                <p className="text-3xl font-bold">{stats.total}</p>
-                <p className="text-blue-100 text-sm">Total</p>
+                <p className="text-3xl font-semibold text-gray-900 dark:text-white">{stats.total}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-blue-100">Inspecciones</span>
-              <span className="font-semibold">{stats.porcentajeCompletado}% OK</span>
+            <div className="flex items-center justify-between text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400">Completadas</span>
+              <span className="font-medium text-gray-900 dark:text-white">{stats.porcentajeCompletado}%</span>
             </div>
           </div>
 
           {/* Equipos Críticos */}
-          <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-red-500 dark:border-red-600">
             <div className="flex items-center justify-between mb-4">
-              <AlertTriangle className="w-8 h-8" />
+              <AlertTriangle className="w-6 h-6 text-red-500 dark:text-red-400" />
               <div className="text-right">
-                <p className="text-3xl font-bold">{stats.criticos}</p>
-                <p className="text-red-100 text-sm">Críticos</p>
+                <p className="text-3xl font-semibold text-red-600 dark:text-red-400">{stats.criticos}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Crítico</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-red-100">Atención urgente</span>
-              <Zap className="w-4 h-4" />
+            <div className="flex items-center justify-between text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400">Requieren atención urgente</span>
             </div>
           </div>
 
           {/* Requieren Atención */}
-          <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-yellow-500 dark:border-yellow-600">
             <div className="flex items-center justify-between mb-4">
-              <Activity className="w-8 h-8" />
+              <Activity className="w-6 h-6 text-yellow-600 dark:text-yellow-500" />
               <div className="text-right">
-                <p className="text-3xl font-bold">{stats.atencion}</p>
-                <p className="text-yellow-100 text-sm">Atención</p>
+                <p className="text-3xl font-semibold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Atención</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-yellow-100">Seguimiento</span>
-              <TrendingUp className="w-4 h-4" />
+            <div className="flex items-center justify-between text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400">Seguimiento programado</span>
             </div>
           </div>
 
           {/* Equipos Normales */}
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <CheckCircle className="w-8 h-8" />
+              <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-500" />
               <div className="text-right">
-                <p className="text-3xl font-bold">{stats.normales}</p>
-                <p className="text-green-100 text-sm">Normales</p>
+                <p className="text-3xl font-semibold text-green-600 dark:text-green-500">{stats.normales}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Normal</p>
               </div>
             </div>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-green-100">Operativos</span>
-              <CheckCircle className="w-4 h-4" />
+            <div className="flex items-center justify-between text-sm pt-3 border-t border-gray-100 dark:border-gray-700">
+              <span className="text-gray-600 dark:text-gray-400">Operación estándar</span>
             </div>
           </div>
         </div>
@@ -117,61 +113,60 @@ export default function Dashboard() {
         <div className="mb-6 flex flex-wrap gap-2">
           <button
             onClick={() => setFiltroEstado('todas')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'todas'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
             Todas ({stats.total})
           </button>
           <button
             onClick={() => setFiltroEstado('completadas')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'completadas'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
             Completadas ({stats.completadas})
           </button>
           <button
             onClick={() => setFiltroEstado('pendientes')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'pendientes'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-gray-900 dark:bg-gray-700 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            <Clock className="w-4 h-4 inline mr-1" />
             Pendientes ({stats.pendientes})
           </button>
           <button
             onClick={() => setFiltroEstado('critico')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'critico'
-                ? 'bg-red-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-red-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
             Críticos ({stats.criticos})
           </button>
           <button
             onClick={() => setFiltroEstado('atencion')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'atencion'
-                ? 'bg-yellow-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-yellow-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
             Atención ({stats.atencion})
           </button>
           <button
             onClick={() => setFiltroEstado('normal')}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filtroEstado === 'normal'
-                ? 'bg-green-500 text-white'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-green-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
             Normales ({stats.normales})
@@ -179,7 +174,7 @@ export default function Dashboard() {
         </div>
 
         {/* Lista de Inspecciones */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {inspeccionesFiltradas.map(inspeccion => (
             <InspeccionCard
               key={inspeccion.id}
@@ -190,7 +185,7 @@ export default function Dashboard() {
         </div>
 
         {inspeccionesFiltradas.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <p className="text-gray-500 dark:text-gray-400">
               No hay inspecciones con este filtro
             </p>
