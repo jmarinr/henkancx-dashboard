@@ -9,3 +9,8 @@
   --color-primary-500: #d97706;
   --color-primary-600: #b45309;
 }
+
+@variant dark {
+  @media (prefers-color-scheme: dark) {}
+  &:where(.dark, .dark *) {}
+}

@@ -1,10 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>henkancx-dashboard</title>
+    <title>HenkanCX Dashboard</title>
+    <script>
+      // Inicializar tema antes de cargar la app para evitar flash
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
