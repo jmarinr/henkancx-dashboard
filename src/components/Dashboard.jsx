@@ -10,10 +10,14 @@ import {
 import { mockInspecciones, getEstadisticas } from '../data/mockData';
 import InspeccionCard from './InspeccionCard';
 import InspeccionDetalle from './InspeccionDetalle';
+import InspeccionesTabla from './InspeccionesTabla';
 
 export default function Dashboard() {
   const [selectedInspeccion, setSelectedInspeccion] = useState(null);
   const [filtroEstado, setFiltroEstado] = useState('todas');
+  const [busqueda, setBusqueda] = useState('');
+  const [fechaInicio, setFechaInicio] = useState('');
+  const [fechaFin, setFechaFin] = useState('');
   
   const stats = getEstadisticas();
   
@@ -27,13 +31,41 @@ export default function Dashboard() {
   }, [selectedInspeccion]);
   
   const inspeccionesFiltradas = mockInspecciones.filter(insp => {
-    if (filtroEstado === 'todas') return true;
-    if (filtroEstado === 'completadas') return insp.estado === 'completada';
-    if (filtroEstado === 'pendientes') return insp.estado === 'pendiente';
-    if (filtroEstado === 'critico') return insp.estadoEquipo === 'critico';
-    if (filtroEstado === 'atencion') return insp.estadoEquipo === 'atencion';
-    if (filtroEstado === 'normal') return insp.estadoEquipo === 'normal';
-    return true;
+    // Filtro por estado
+    let pasaFiltroEstado = true;
+    if (filtroEstado === 'completadas') pasaFiltroEstado = insp.estado === 'completada';
+    else if (filtroEstado === 'pendientes') pasaFiltroEstado = insp.estado === 'pendiente';
+    else if (filtroEstado === 'critico') pasaFiltroEstado = insp.estadoEquipo === 'critico';
+    else if (filtroEstado === 'atencion') pasaFiltroEstado = insp.estadoEquipo === 'atencion';
+    else if (filtroEstado === 'normal') pasaFiltroEstado = insp.estadoEquipo === 'normal';
+    
+    // Filtro por búsqueda (OT ID, Cliente, Técnico)
+    let pasaBusqueda = true;
+    if (busqueda.trim()) {
+      const termino = busqueda.toLowerCase();
+      pasaBusqueda = 
+        insp.id.toLowerCase().includes(termino) ||
+        insp.otId.toLowerCase().includes(termino) ||
+        insp.cliente.toLowerCase().includes(termino) ||
+        insp.tecnico.toLowerCase().includes(termino);
+    }
+    
+    // Filtro por rango de fechas
+    let pasaFechas = true;
+    if (fechaInicio || fechaFin) {
+      const fechaInsp = new Date(insp.fecha);
+      if (fechaInicio) {
+        const inicio = new Date(fechaInicio);
+        pasaFechas = pasaFechas && fechaInsp >= inicio;
+      }
+      if (fechaFin) {
+        const fin = new Date(fechaFin);
+        fin.setHours(23, 59, 59, 999); // Incluir todo el día
+        pasaFechas = pasaFechas && fechaInsp <= fin;
+      }
+    }
+    
+    return pasaFiltroEstado && pasaBusqueda && pasaFechas;
   });
 
   if (selectedInspeccion) {
@@ -120,6 +152,61 @@ export default function Dashboard() {
           </div>
         </div>
 
+        {/* Barra de Búsqueda */}
+        <div className="mb-4 sm:mb-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 shadow-sm border border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col sm:flex-row gap-3">
+              {/* Input de búsqueda principal */}
+              <div className="flex-1">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Buscar por OT ID, Cliente o Técnico..."
+                    value={busqueda}
+                    onChange={(e) => setBusqueda(e.target.value)}
+                    className="w-full px-4 py-2 pl-10 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-900 dark:text-white"
+                  />
+                  <svg className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Filtros de fecha */}
+              <div className="flex gap-2">
+                <input
+                  type="date"
+                  value={fechaInicio}
+                  onChange={(e) => setFechaInicio(e.target.value)}
+                  className="px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-900 dark:text-white"
+                  placeholder="Desde"
+                />
+                <input
+                  type="date"
+                  value={fechaFin}
+                  onChange={(e) => setFechaFin(e.target.value)}
+                  className="px-3 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-900 dark:text-white"
+                  placeholder="Hasta"
+                />
+              </div>
+
+              {/* Botón limpiar */}
+              {(busqueda || fechaInicio || fechaFin) && (
+                <button
+                  onClick={() => {
+                    setBusqueda('');
+                    setFechaInicio('');
+                    setFechaFin('');
+                  }}
+                  className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
+                >
+                  Limpiar
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* Filtros */}
         <div className="mb-4 flex flex-wrap gap-2">
           <button
@@ -185,7 +272,16 @@ export default function Dashboard() {
         </div>
 
         {/* Lista de Inspecciones */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Vista de Tabla (Desktop) */}
+        <div className="hidden lg:block">
+          <InspeccionesTabla 
+            inspecciones={inspeccionesFiltradas}
+            onSelectInspeccion={setSelectedInspeccion}
+          />
+        </div>
+
+        {/* Vista de Tarjetas (Móvil/Tablet) */}
+        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {inspeccionesFiltradas.map(inspeccion => (
             <InspeccionCard
               key={inspeccion.id}
@@ -198,7 +294,7 @@ export default function Dashboard() {
         {inspeccionesFiltradas.length === 0 && (
           <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <p className="text-gray-500 dark:text-gray-400">
-              No hay inspecciones con este filtro
+              No hay inspecciones que coincidan con los filtros aplicados
             </p>
           </div>
         )}
