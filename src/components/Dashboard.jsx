@@ -59,9 +59,9 @@ export default function Dashboard() {
         </div>
 
         {/* Estadísticas */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
-          {/* Total Inspecciones */}
-          <div className="col-span-2 bg-gray-900 dark:bg-gray-800 rounded-xl p-5 sm:p-6 border border-gray-700 shadow-lg">
+        <div className="space-y-3 sm:space-y-4 lg:space-y-6 mb-6 sm:mb-8">
+          {/* Total Inspecciones - Ocupa todo el ancho */}
+          <div className="bg-gray-900 dark:bg-gray-800 rounded-xl p-5 sm:p-6 border border-gray-700 shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <ClipboardCheck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" />
               <div className="text-right">
@@ -75,46 +75,52 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Equipos Críticos */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-red-500 shadow-md">
-            <div className="flex items-center justify-between mb-3">
-              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-red-500" />
-              <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Crítico</p>
+          {/* Grid 2x2 para estados */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
+            {/* Equipos Críticos */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-red-500 shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-red-500" />
+                <div className="text-right">
+                  <p className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Crítico</p>
+                </div>
+              </div>
+              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
+                <span className="text-gray-600 dark:text-gray-400 font-medium">Atención urgente</span>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Atención urgente</span>
-            </div>
-          </div>
 
-          {/* Requieren Atención */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-yellow-500 shadow-md">
-            <div className="flex items-center justify-between mb-3">
-              <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-600 dark:text-yellow-500" />
-              <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Atención</p>
+            {/* Requieren Atención */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-yellow-500 shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <Activity className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-600 dark:text-yellow-500" />
+                <div className="text-right">
+                  <p className="text-3xl sm:text-4xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Atención</p>
+                </div>
+              </div>
+              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
+                <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
-            </div>
-          </div>
 
-          {/* Equipos Normales */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-green-500 shadow-md">
-            <div className="flex items-center justify-between mb-3">
-              <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
-              <div className="text-right">
-                <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Normal</p>
+            {/* Equipos Normales */}
+            <div className="col-span-2 sm:col-span-1 bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-5 border-2 border-green-500 shadow-md">
+              <div className="flex items-center justify-between mb-3">
+                <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-500" />
+                <div className="text-right">
+                  <p className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Normal</p>
+                </div>
+              </div>
+              <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
+                <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
               </div>
             </div>
-            <div className="text-xs sm:text-sm pt-3 border-t border-gray-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Operación estándar</span>
-            </div>
+
+            {/* Placeholder para mantener grid 2x2 en móvil */}
+            <div className="sm:hidden"></div>
           </div>
         </div>
 
