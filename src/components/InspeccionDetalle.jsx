@@ -96,7 +96,7 @@ export default function InspeccionDetalle({ inspeccion, onClose }) {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-6">
-          <div className="flex items-start justify-between mb-5">
+          <div className="flex items-start justify-between gap-4 mb-5">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
                 <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -110,7 +110,7 @@ export default function InspeccionDetalle({ inspeccion, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors border border-gray-300 dark:border-gray-600"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors border border-gray-300 dark:border-gray-600 flex-shrink-0"
             >
               <X className="w-6 h-6 text-gray-600 dark:text-gray-400" />
             </button>
