@@ -36,7 +36,15 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Torre en excelente estado. Estructura sólida y bien mantenida.',
-    fotos: 6
+    fotos: 6,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=80', // Torre telecomunicaciones
+      'https://images.unsplash.com/photo-1530735759451-4b1064362e4c?w=800&q=80', // Antenas en torre
+      'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&q=80', // Torre desde abajo
+      'https://images.unsplash.com/photo-1551522435-a13afa10f103?w=800&q=80', // Detalle estructura
+      'https://images.unsplash.com/photo-1530735729515-9cf38b76467e?w=800&q=80', // Torre urbana
+      'https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=800&q=80'  // Vista completa torre
+    ]
   },
   {
     id: 'INS-2025-002',
@@ -80,7 +88,17 @@ export const mockInspecciones = [
     },
     
     observaciones: 'URGENTE: Cable feeder con alta potencia reflejada. Afecta calidad de señal. Requiere reemplazo inmediato.',
-    fotos: 8
+    fotos: 8,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1519810755548-39cd217da494?w=800&q=80', // Antena sectorial
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80', // Equipos telecomunicaciones
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', // Tecnología RF
+      'https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=800&q=80', // Torre con antenas
+      'https://images.unsplash.com/photo-1530735729515-9cf38b76467e?w=800&q=80', // Antenas múltiples
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', // Equipos rack
+      'https://images.unsplash.com/photo-1581092918484-8313e1f7e8c7?w=800&q=80', // Cables y conexiones
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'  // Detalle cable feeder
+    ]
   },
   {
     id: 'INS-2025-003',
@@ -127,7 +145,14 @@ export const mockInspecciones = [
     },
     
     observaciones: 'UPS operando correctamente. Baterías mostrando desgaste normal. Planificar reemplazo preventivo.',
-    fotos: 5
+    fotos: 5,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', // UPS rack
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80', // Banco baterías
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80', // Data center power
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80', // Sistemas eléctricos
+      'https://images.unsplash.com/photo-1581092918484-8313e1f7e8c7?w=800&q=80'  // Conexiones eléctricas
+    ]
   },
   {
     id: 'INS-2025-004',
@@ -160,7 +185,8 @@ export const mockInspecciones = [
     
     iaResult: null,
     observaciones: null,
-    fotos: 0
+    fotos: 0,
+    fotosUrls: []
   },
   {
     id: 'INS-2025-005',
@@ -199,7 +225,13 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Torre autosoportada en perfecto estado. Estructura nueva y bien mantenida.',
-    fotos: 4
+    fotos: 4,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1530735859710-1375c7ae1b93?w=800&q=80', // Torre autosoportada
+      'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&q=80', // Vista torre
+      'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&q=80', // Estructura torre
+      'https://images.unsplash.com/photo-1530735759451-4b1064362e4c?w=800&q=80'  // Antenas torre
+    ]
   },
   {
     id: 'INS-2025-006',
@@ -245,7 +277,14 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Generador en excelente condición. Mantenimiento preventivo completado.',
-    fotos: 5
+    fotos: 5,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1581092918484-8313e1f7e8c7?w=800&q=80', // Generador industrial
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', // Panel control
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80', // Sistema energía
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80', // Equipos eléctricos
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'  // Detalles técnicos
+    ]
   },
   {
     id: 'INS-2025-007',
@@ -285,7 +324,12 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Sistema de enfriamiento funcional pero requiere mantenimiento. Condensador con acumulación de polvo.',
-    fotos: 3
+    fotos: 3,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80', // HVAC sistema
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80', // Climatización
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80'  // Equipos cooling
+    ]
   },
   {
     id: 'INS-2025-008',
@@ -326,7 +370,13 @@ export const mockInspecciones = [
     },
     
     observaciones: 'Enlace de microondas operando óptimamente. Señal fuerte y estable.',
-    fotos: 4
+    fotos: 4,
+    fotosUrls: [
+      'https://images.unsplash.com/photo-1519810755548-39cd217da494?w=800&q=80', // Antena microondas
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80', // Radio enlace
+      'https://images.unsplash.com/photo-1530735729515-9cf38b76467e?w=800&q=80', // Antenas parabólicas
+      'https://images.unsplash.com/photo-1558346547-4439467bd1d5?w=800&q=80'  // Torre con radio
+    ]
   }
 ];
 

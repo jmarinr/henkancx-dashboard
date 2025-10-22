@@ -15,8 +15,10 @@ import {
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, subMonths } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { mockInspecciones } from '../data/mockData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Analitica({ onBack }) {
+  const { t } = useLanguage();
   const [periodoSeleccionado, setPeriodoSeleccionado] = useState('mes'); // mes, trimestre, año
 
   // Calcular métricas
@@ -120,16 +122,16 @@ export default function Analitica({ onBack }) {
             className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-4 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="text-sm font-medium">Volver al Dashboard</span>
+            <span className="text-sm font-medium">{t('backToDashboard')}</span>
           </button>
           
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                Analítica de Gestión
+                {t('analyticsTitle')}
               </h1>
               <p className="text-gray-600 dark:text-gray-400">
-                Métricas e indicadores clave de órdenes de trabajo
+                {t('analyticsDesc')}
               </p>
             </div>
             
@@ -143,7 +145,7 @@ export default function Analitica({ onBack }) {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600'
                 }`}
               >
-                Este Mes
+                {t('thisMonth')}
               </button>
               <button
                 onClick={() => setPeriodoSeleccionado('trimestre')}
@@ -153,7 +155,7 @@ export default function Analitica({ onBack }) {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600'
                 }`}
               >
-                Trimestre
+                {t('quarter')}
               </button>
               <button
                 onClick={() => setPeriodoSeleccionado('año')}
@@ -163,7 +165,7 @@ export default function Analitica({ onBack }) {
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600'
                 }`}
               >
-                Este Año
+                {t('thisYear')}
               </button>
             </div>
           </div>
@@ -173,32 +175,32 @@ export default function Analitica({ onBack }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <MetricCard
             icon={BarChart3}
-            titulo="Total de Órdenes"
+            titulo={t('totalOrders')}
             valor={metricas.total}
-            subtitulo="Órdenes en sistema"
+            subtitulo={t('ordersInSystem')}
             color="bg-blue-600"
             trend={12}
           />
           <MetricCard
             icon={CheckCircle2}
-            titulo="Órdenes Completadas"
+            titulo={t('completedOrders')}
             valor={metricas.completadas}
-            subtitulo={`${metricas.tasaExito}% tasa de éxito`}
+            subtitulo={`${metricas.tasaExito}% ${t('successRate')}`}
             color="bg-green-600"
             trend={8}
           />
           <MetricCard
             icon={Clock}
-            titulo="Órdenes Pendientes"
+            titulo={t('pendingOrders')}
             valor={metricas.pendientes}
-            subtitulo="Requieren atención"
+            subtitulo={t('requireAttention')}
             color="bg-gray-600"
           />
           <MetricCard
             icon={AlertTriangle}
-            titulo="Equipos Críticos"
+            titulo={t('criticalEquipment')}
             valor={metricas.criticos}
-            subtitulo={`${metricas.tasaCriticos}% de completadas`}
+            subtitulo={`${metricas.tasaCriticos}% ${t('ofCompleted')}`}
             color="bg-red-600"
             trend={-15}
           />
@@ -208,30 +210,30 @@ export default function Analitica({ onBack }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <MetricCard
             icon={Activity}
-            titulo="Tiempo Promedio"
-            valor={`${metricas.tiempoPromedio} min`}
-            subtitulo="Por inspección"
+            titulo={t('averageTime')}
+            valor={`${metricas.tiempoPromedio} ${t('minutes')}`}
+            subtitulo={t('perInspection')}
             color="bg-purple-600"
           />
           <MetricCard
             icon={Users}
-            titulo="Técnicos Activos"
+            titulo={t('activeTechs')}
             valor={metricas.tecnicos}
-            subtitulo="En operación"
+            subtitulo={t('inOperation')}
             color="bg-indigo-600"
           />
           <MetricCard
             icon={Zap}
-            titulo="Clientes Atendidos"
+            titulo={t('clientsServed')}
             valor={metricas.clientes}
-            subtitulo="Únicos este periodo"
+            subtitulo={t('uniquePeriod')}
             color="bg-orange-600"
           />
           <MetricCard
             icon={PieChart}
-            titulo="Requieren Atención"
+            titulo={t('requireAttentionMetric')}
             valor={metricas.atencion}
-            subtitulo="Para seguimiento"
+            subtitulo={t('forFollowUp')}
             color="bg-yellow-600"
           />
         </div>
@@ -242,17 +244,17 @@ export default function Analitica({ onBack }) {
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <BarChart3 className="w-5 h-5" />
-              Distribución de Estados
+              {t('stateDistribution')}
             </h3>
             <div className="space-y-4">
               <ProgressBar
-                label="Completadas"
+                label={t('completed')}
                 value={metricas.completadas}
                 max={metricas.total}
                 color="bg-green-600"
               />
               <ProgressBar
-                label="Pendientes"
+                label={t('pendingPlural')}
                 value={metricas.pendientes}
                 max={metricas.total}
                 color="bg-gray-600"
@@ -263,7 +265,7 @@ export default function Analitica({ onBack }) {
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">
                   {metricas.tasaExito}%
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Tasa de Completación</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{t('completionRate')}</p>
               </div>
             </div>
           </div>
@@ -272,23 +274,23 @@ export default function Analitica({ onBack }) {
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <PieChart className="w-5 h-5" />
-              Condición de Equipos
+              {t('equipmentCondition')}
             </h3>
             <div className="space-y-4">
               <ProgressBar
-                label="Normales"
+                label={t('normals')}
                 value={metricas.normales}
                 max={metricas.completadas}
                 color="bg-green-600"
               />
               <ProgressBar
-                label="Requieren Atención"
+                label={t('requireAttentionMetric')}
                 value={metricas.atencion}
                 max={metricas.completadas}
                 color="bg-yellow-600"
               />
               <ProgressBar
-                label="Críticos"
+                label={t('criticals')}
                 value={metricas.criticos}
                 max={metricas.completadas}
                 color="bg-red-600"
@@ -299,7 +301,7 @@ export default function Analitica({ onBack }) {
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">
                   {Math.round((metricas.normales / metricas.completadas) * 100)}%
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Equipos en Buen Estado</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{t('equipmentInGoodState')}</p>
               </div>
             </div>
           </div>
@@ -309,26 +311,26 @@ export default function Analitica({ onBack }) {
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-6">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <Users className="w-5 h-5" />
-            Rendimiento por Técnico
+            {t('performanceByTech')}
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
-                    Técnico
+                    {t('tech')}
                   </th>
                   <th className="px-4 py-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
-                    Total
+                    {t('total')}
                   </th>
                   <th className="px-4 py-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
-                    Completadas
+                    {t('completed')}
                   </th>
                   <th className="px-4 py-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
-                    Pendientes
+                    {t('pendingPlural')}
                   </th>
                   <th className="px-4 py-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400 uppercase">
-                    Tasa Completación
+                    {t('completionRateHeader')}
                   </th>
                 </tr>
               </thead>
@@ -365,7 +367,7 @@ export default function Analitica({ onBack }) {
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5" />
-            Órdenes por Cliente
+            {t('ordersByClient')}
           </h3>
           <div className="space-y-3">
             {metricas.inspeccionesPorCliente
