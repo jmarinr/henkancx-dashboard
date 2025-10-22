@@ -1,8 +1,11 @@
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Building2, MapPin, User, Calendar, AlertCircle, AlertTriangle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function InspeccionesTabla({ inspecciones, onSelectInspeccion }) {
+  const { t } = useLanguage();
+  
   const getEstadoBadge = (estado) => {
     const badges = {
       completada: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
@@ -11,8 +14,8 @@ export default function InspeccionesTabla({ inspecciones, onSelectInspeccion }) 
     };
     
     const labels = {
-      completada: 'Completada',
-      pendiente: 'Pendiente',
+      completada: t('completed'),
+      pendiente: t('pending'),
       cancelada: 'Cancelada'
     };
     
@@ -31,9 +34,9 @@ export default function InspeccionesTabla({ inspecciones, onSelectInspeccion }) 
     };
     
     const labels = {
-      critico: 'Crítico',
-      atencion: 'Atención',
-      normal: 'Normal'
+      critico: t('critical'),
+      atencion: t('attention'),
+      normal: t('normal')
     };
     
     const iconos = {
@@ -57,25 +60,25 @@ export default function InspeccionesTabla({ inspecciones, onSelectInspeccion }) 
           <thead className="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <tr>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                OT / Inspección
+                OT / ID
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                Cliente / Sitio
+                {t('client')}
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                Equipo
+                {t('site')}
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                Técnico
+                {t('equipment')}
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                Fecha
+                {t('technician')}
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                {t('date')}
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                 Estado
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                Equipo
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
                 Acciones
@@ -100,26 +103,34 @@ export default function InspeccionesTabla({ inspecciones, onSelectInspeccion }) 
                   </div>
                 </td>
                 <td className="px-4 py-4">
-                  <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
-                      {inspeccion.cliente}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      {inspeccion.sitio}
-                    </p>
-                  </div>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {inspeccion.cliente}
+                  </p>
+                </td>
+                <td className="px-4 py-4">
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    {inspeccion.sitio}
+                  </p>
                 </td>
                 <td className="px-4 py-4">
                   <div>
-                    {inspeccion.marcaPlanta && (
+                    {inspeccion.equipoDetalle ? (
+                      <p className="text-sm text-gray-900 dark:text-white">
+                        {inspeccion.equipoDetalle}
+                      </p>
+                    ) : inspeccion.marcaPlanta ? (
                       <>
                         <p className="text-sm text-gray-900 dark:text-white">
                           {inspeccion.marcaPlanta} {inspeccion.modeloPlanta}
                         </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          {inspeccion.capacidadKW} KW
-                        </p>
+                        {inspeccion.capacidadKW && (
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                            {inspeccion.capacidadKW} KW
+                          </p>
+                        )}
                       </>
+                    ) : (
+                      <p className="text-sm text-gray-500 dark:text-gray-400">-</p>
                     )}
                   </div>
                 </td>

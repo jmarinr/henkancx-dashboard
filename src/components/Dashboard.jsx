@@ -11,8 +11,10 @@ import { mockInspecciones, getEstadisticas } from '../data/mockData';
 import InspeccionCard from './InspeccionCard';
 import InspeccionDetalle from './InspeccionDetalle';
 import InspeccionesTabla from './InspeccionesTabla';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Dashboard() {
+  const { t } = useLanguage();
   const [selectedInspeccion, setSelectedInspeccion] = useState(null);
   const [filtroEstado, setFiltroEstado] = useState('todas');
   const [busqueda, setBusqueda] = useState('');
@@ -39,7 +41,7 @@ export default function Dashboard() {
     else if (filtroEstado === 'atencion') pasaFiltroEstado = insp.estadoEquipo === 'atencion';
     else if (filtroEstado === 'normal') pasaFiltroEstado = insp.estadoEquipo === 'normal';
     
-    // Filtro por búsqueda (OT ID, Cliente, Técnico)
+    // Filtro por búsqueda (ID, OT, Cliente, Sitio, Técnico)
     let pasaBusqueda = true;
     if (busqueda.trim()) {
       const termino = busqueda.toLowerCase();
@@ -47,6 +49,7 @@ export default function Dashboard() {
         insp.id.toLowerCase().includes(termino) ||
         insp.otId.toLowerCase().includes(termino) ||
         insp.cliente.toLowerCase().includes(termino) ||
+        insp.sitio.toLowerCase().includes(termino) ||
         insp.tecnico.toLowerCase().includes(termino);
     }
     
@@ -84,10 +87,10 @@ export default function Dashboard() {
         <div className="mb-6 sm:mb-8 flex items-start justify-between">
           <div>
             <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-2">
-              Panel de Control
+              {t('controlPanel')}
             </h1>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              Monitoreo de inspecciones de generadores eléctricos
+              {t('monitoringDesc')}
             </p>
           </div>
           <button
@@ -97,7 +100,7 @@ export default function Dashboard() {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <span className="hidden sm:inline">Analítica</span>
+            <span className="hidden sm:inline">{t('analytics')}</span>
           </button>
         </div>
 
@@ -116,12 +119,12 @@ export default function Dashboard() {
               <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 flex-shrink-0" />
               <div className="text-right">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">{stats.completadas}</p>
-                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300">Completadas</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-300">{t('completed')}</p>
               </div>
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-blue-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">De {stats.total} totales</span>
+                <span className="text-gray-600 dark:text-gray-300">{t('ofTotal', { total: stats.total })}</span>
                 <span className="font-bold text-blue-600 dark:text-blue-400">{stats.porcentajeCompletado}%</span>
               </div>
             </div>
@@ -140,11 +143,11 @@ export default function Dashboard() {
               <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0" />
               <div className="text-right">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-600 dark:text-red-500">{stats.criticos}</p>
-                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Crítico</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">{t('critical')}</p>
               </div>
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-red-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Urgente</span>
+              <span className="text-gray-600 dark:text-gray-400 font-medium">{t('urgent')}</span>
             </div>
           </button>
 
@@ -161,11 +164,11 @@ export default function Dashboard() {
               <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
               <div className="text-right">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-600 dark:text-yellow-500">{stats.atencion}</p>
-                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Atención</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">{t('attention')}</p>
               </div>
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-yellow-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">Seguimiento</span>
+              <span className="text-gray-600 dark:text-gray-400 font-medium">{t('followUp')}</span>
             </div>
           </button>
 
@@ -182,11 +185,11 @@ export default function Dashboard() {
               <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 dark:text-green-500 flex-shrink-0" />
               <div className="text-right">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600 dark:text-green-500">{stats.normales}</p>
-                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">Normal</p>
+                <p className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">{t('normal')}</p>
               </div>
             </div>
             <div className="text-[10px] sm:text-xs pt-1.5 sm:pt-2 border-t border-green-200 dark:border-gray-700">
-              <span className="text-gray-600 dark:text-gray-400 font-medium">OK</span>
+              <span className="text-gray-600 dark:text-gray-400 font-medium">{t('ok')}</span>
             </div>
           </button>
         </div>
@@ -200,7 +203,7 @@ export default function Dashboard() {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="Buscar por OT ID, Cliente o Técnico..."
+                    placeholder={t('searchPlaceholder')}
                     value={busqueda}
                     onChange={(e) => setBusqueda(e.target.value)}
                     className="w-full px-4 py-2.5 pl-10 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
@@ -257,7 +260,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Todas ({stats.total})
+            {t('all')} ({stats.total})
           </button>
           <button
             onClick={() => setFiltroEstado('completadas')}
@@ -267,7 +270,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Completadas ({stats.completadas})
+            {t('completedFilter')} ({stats.completadas})
           </button>
           <button
             onClick={() => setFiltroEstado('pendientes')}
@@ -277,7 +280,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Pendientes ({stats.pendientes})
+            {t('pendingPlural')} ({stats.pendientes})
           </button>
           <button
             onClick={() => setFiltroEstado('critico')}
@@ -287,7 +290,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Críticos ({stats.criticos})
+            {t('criticals')} ({stats.criticos})
           </button>
           <button
             onClick={() => setFiltroEstado('atencion')}
@@ -297,7 +300,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Atención ({stats.atencion})
+            {t('attentionPlural')} ({stats.atencion})
           </button>
           <button
             onClick={() => setFiltroEstado('normal')}
@@ -307,7 +310,7 @@ export default function Dashboard() {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
             }`}
           >
-            Normales ({stats.normales})
+            {t('normals')} ({stats.normales})
           </button>
         </div>
 
