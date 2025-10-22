@@ -1,8 +1,10 @@
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import Analitica from './components/Analitica';
+import Settings from './components/Settings';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -19,7 +21,6 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Actualizar navegación
   useEffect(() => {
     const originalPushState = window.history.pushState;
     window.history.pushState = function(...args) {
@@ -27,21 +28,32 @@ function App() {
       const path = args[2];
       if (path === '/analitica') {
         window.location.hash = 'analitica';
+      } else if (path === '/settings') {
+        window.location.hash = 'settings';
       } else if (path === '/') {
         window.location.hash = 'dashboard';
       }
     };
   }, []);
 
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'analitica':
+        return <Analitica onBack={() => window.location.hash = 'dashboard'} />;
+      case 'settings':
+        return <Settings onBack={() => window.location.hash = 'dashboard'} />;
+      default:
+        return <Dashboard />;
+    }
+  };
+
   return (
-    <ThemeProvider>
-      <Header />
-      {currentPage === 'analitica' ? (
-        <Analitica onBack={() => window.location.hash = 'dashboard'} />
-      ) : (
-        <Dashboard />
-      )}
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <Header />
+        {renderPage()}
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

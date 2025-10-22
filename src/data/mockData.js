@@ -3,212 +3,160 @@ export const mockInspecciones = [
     id: 'INS-2025-001',
     otId: 'OT-2025-001',
     fecha: '2025-10-20T10:30:00',
-    tecnico: 'Juan Pérez',
-    cliente: 'Banco Nacional',
-    sitio: 'Sucursal Central San José',
+    tecnico: 'Carlos Rodríguez',
+    cliente: 'Cable & Wireless Panamá',
+    sitio: 'Torre Costa del Este',
+    tipoEquipo: 'tower',
+    equipoDetalle: 'Torre monopolo 45m',
     estado: 'completada',
     estadoEquipo: 'normal',
-    ubicacion: { latitude: 9.9281, longitude: -84.0907 },
-    duracion: 45,
+    ubicacion: { latitude: 9.0575, longitude: -79.4886 },
+    duracion: 55,
     
-    // Datos del equipo
-    hodometro: 1250,
-    marcaPlanta: 'Himoinsa',
-    modeloPlanta: 'HYW-35',
-    marcaMotor: 'Perkins',
-    modeloMotor: '1104C-44TAG2',
-    capacidadKW: 35,
-    capacidadHP: 47,
+    hodometro: 1850,
+    marcaPlanta: 'Rohn',
+    modeloPlanta: 'SSV-45',
+    altura: 45,
     
-    // Mediciones
-    voltajeL1N: 112,
-    voltajeL2N: 110,
-    voltajeL1L2: 222,
+    inclinacion: 0.3,
+    tensionRetenidas: 'Óptima',
+    estadoEstructura: 'Bueno',
+    corrosion: 'Leve',
+    
+    voltajeL1N: 120,
+    voltajeL2N: 118,
+    voltajeL1L2: 238,
     frecuencia: 60,
-    presionAceite: 65,
-    temperatura: 85,
     
-    // Batería
-    voltageBatCargador: 13.8,
-    voltageBatSinCargador: 12.6,
-    estadoBateria: 'Bien',
-    
-    // Pruebas
-    arranqueManual: 'Ok',
-    arranqueAutomatico: 'Ok',
-    
-    // IA
     iaResult: {
       estado: 'normal',
       alarmas: [],
-      reemplazos: ['Filtro de aceite cambiado preventivamente'],
-      revisiones: ['Próximo cambio de filtro de aire en 250 horas']
+      reemplazos: ['Pintura anticorrosiva aplicada preventivamente'],
+      revisiones: ['Próxima inspección estructural en 6 meses']
     },
     
-    observaciones: 'Generador en excelente estado. Mantenimiento preventivo completado.',
-    fotos: 4,
-    fotosUrls: [
-      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&q=80'
-    ]
+    observaciones: 'Torre en excelente estado. Estructura sólida y bien mantenida.',
+    fotos: 6
   },
   {
     id: 'INS-2025-002',
-    otId: 'OT-2025-002-URG',
-    fecha: '2025-10-19T14:20:00',
-    tecnico: 'Carlos Rodríguez',
-    cliente: 'Fábrica Industrial SA',
-    sitio: 'Planta Alajuela',
+    otId: 'OT-2025-002',
+    fecha: '2025-10-19T14:15:00',
+    tecnico: 'María Gonzalez',
+    cliente: 'Claro Panamá',
+    sitio: 'Estación Base Albrook',
+    tipoEquipo: 'transmission',
+    equipoDetalle: 'Antena sectorial 4G/5G',
     estado: 'completada',
     estadoEquipo: 'critico',
-    ubicacion: { latitude: 10.0162, longitude: -84.2147 },
-    duracion: 90,
+    ubicacion: { latitude: 9.0026, longitude: -79.5447 },
+    duracion: 75,
     
-    // Datos del equipo
-    hodometro: 3850,
-    marcaPlanta: 'Cummins',
-    modeloPlanta: 'C150D6',
-    marcaMotor: 'Cummins',
-    modeloMotor: '6CTA8.3-G2',
-    capacidadKW: 150,
-    capacidadHP: 201,
+    hodometro: 3250,
+    marcaPlanta: 'Ericsson',
+    modeloPlanta: 'AIR 6488',
+    frecuenciaBanda: '1800 MHz',
+    potenciaTransmision: '40W',
     
-    // Mediciones
-    voltajeL1N: 95,
-    voltajeL2N: 105,
-    voltajeL1L2: 200,
-    frecuencia: 58,
-    presionAceite: 35,
-    temperatura: 98,
+    vswr: 2.8,
+    potenciaReflejada: 15,
+    potenciaSalida: 35,
+    temperatura: 68,
     
-    // Batería
-    voltageBatCargador: 13.2,
-    voltageBatSinCargador: 11.8,
-    estadoBateria: 'Regular',
+    voltajeL1N: 48,
+    voltajeL2N: 48,
+    voltajeL1L2: 48,
+    frecuencia: null,
     
-    // Pruebas
-    arranqueManual: 'Ok',
-    arranqueAutomatico: 'No',
-    
-    // IA
     iaResult: {
       estado: 'critico',
       alarmas: [
-        'Voltaje L1-N fuera de rango (95V)',
-        'Temperatura alta (98°C)',
-        'Presión de aceite baja (35 PSI)',
-        'Batería débil (11.8V)',
-        'Frecuencia baja (58 Hz)'
+        'VSWR fuera de rango aceptable (>2.0)',
+        'Temperatura operativa alta',
+        'Potencia reflejada elevada'
       ],
-      reemplazos: [
-        'Batería deteriorada - Reemplazo inmediato',
-        'Tuberías de combustible con fugas',
-        'Cables de batería dañados'
-      ],
-      revisiones: [
-        'Sistema de enfriamiento urgente',
-        'Bomba de aceite',
-        'Sello principal del motor',
-        'Sistema de arranque automático'
-      ]
+      reemplazos: ['Cable feeder debe ser reemplazado urgentemente'],
+      revisiones: ['Verificar conectores y jumpers inmediatamente']
     },
     
-    observaciones: 'ATENCIÓN URGENTE: Múltiples fallas críticas detectadas. Se requiere intervención correctiva urgente.',
-    fotos: 4,
-    fotosUrls: [
-      'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
-      'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
-      'https://images.unsplash.com/photo-1621905252472-8d0e15f7ebcc?w=800&q=80',
-      'https://images.unsplash.com/photo-1621905252868-b93c28c0567f?w=800&q=80'
-    ]
+    observaciones: 'URGENTE: Cable feeder con alta potencia reflejada. Afecta calidad de señal. Requiere reemplazo inmediato.',
+    fotos: 8
   },
   {
     id: 'INS-2025-003',
     otId: 'OT-2025-003',
-    fecha: '2025-10-18T09:15:00',
-    tecnico: 'María Sánchez',
-    cliente: 'Hospital San Rafael',
-    sitio: 'Edificio Principal',
+    fecha: '2025-10-18T09:00:00',
+    tecnico: 'Roberto Castillo',
+    cliente: 'Digicel Panamá',
+    sitio: 'Centro de Datos Tumba Muerto',
+    tipoEquipo: 'power',
+    equipoDetalle: 'UPS Trifásico + Banco de baterías',
     estado: 'completada',
     estadoEquipo: 'atencion',
-    ubicacion: { latitude: 9.9326, longitude: -84.0723 },
-    duracion: 60,
+    ubicacion: { latitude: 9.0369, longitude: -79.5020 },
+    duracion: 90,
     
-    hodometro: 2100,
-    marcaPlanta: 'Kohler',
-    modeloPlanta: 'KD200',
-    marcaMotor: 'John Deere',
-    modeloMotor: '4045TF250',
-    capacidadKW: 200,
-    capacidadHP: 268,
+    hodometro: 18500,
+    marcaPlanta: 'APC by Schneider',
+    modeloPlanta: 'Symmetra PX 100kW',
+    capacidadKW: 100,
+    capacidadHP: 134,
     
-    voltajeL1N: 108,
-    voltajeL2N: 112,
-    voltajeL1L2: 220,
+    cargaBateria: 78,
+    voltajeEntrada: 220,
+    voltajeSalida: 220,
+    corrienteCarga: 180,
+    factorPotencia: 0.95,
+    temperaturaAmbiente: 24,
+    
+    voltajeL1N: 220,
+    voltajeL2N: 218,
+    voltajeL1L2: 438,
     frecuencia: 60,
-    presionAceite: 55,
-    temperatura: 88,
     
-    voltageBatCargador: 13.5,
-    voltageBatSinCargador: 12.4,
-    estadoBateria: 'Bien',
-    
-    arranqueManual: 'Ok',
-    arranqueAutomatico: 'Ok',
+    voltageBatCargador: 54.5,
+    voltageBatSinCargador: 52.8,
+    estadoBateria: 'Requiere atención',
+    vidaUtilEstimada: '65%',
     
     iaResult: {
       estado: 'atencion',
-      alarmas: ['Voltaje L1-N ligeramente bajo'],
-      reemplazos: [],
-      revisiones: [
-        'Revisar regulador de voltaje',
-        'Programar cambio de aceite en 100 horas'
-      ]
+      alarmas: ['Capacidad de batería por debajo del 80%'],
+      reemplazos: ['Considerar reemplazo de banco de baterías en próximos 3 meses'],
+      revisiones: ['Monitorear capacidad de batería semanalmente']
     },
     
-    observaciones: 'Generador operativo. Se detectó ligera variación en voltaje L1. Requiere seguimiento.',
-    fotos: 3,
-    fotosUrls: [
-      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&q=80'
-    ]
+    observaciones: 'UPS operando correctamente. Baterías mostrando desgaste normal. Planificar reemplazo preventivo.',
+    fotos: 5
   },
   {
     id: 'INS-2025-004',
     otId: 'OT-2025-004',
     fecha: '2025-10-17T15:45:00',
-    tecnico: 'Roberto Vargas',
-    cliente: 'Centro Comercial Plaza',
-    sitio: 'Zona Sur',
+    tecnico: 'Ana Morales',
+    cliente: 'Tigo Panamá',
+    sitio: 'Nodo Fibra Óptica Chorrera',
+    tipoEquipo: 'network',
+    equipoDetalle: 'Empalme de fibra óptica 144 hilos',
     estado: 'pendiente',
     estadoEquipo: null,
-    ubicacion: { latitude: 9.9200, longitude: -84.0950 },
+    ubicacion: { latitude: 8.8804, longitude: -79.7835 },
     duracion: null,
     
     hodometro: null,
-    marcaPlanta: 'Caterpillar',
-    modeloPlanta: 'C15',
-    marcaMotor: null,
-    modeloMotor: null,
-    capacidadKW: null,
-    capacidadHP: null,
+    marcaPlanta: 'Corning',
+    modeloPlanta: 'OptiTap',
+    capacidadHilos: 144,
+    tipoFibra: 'Monomodo G.652D',
     
     voltajeL1N: null,
     voltajeL2N: null,
     voltajeL1L2: null,
     frecuencia: null,
-    presionAceite: null,
-    temperatura: null,
     
     voltageBatCargador: null,
     voltageBatSinCargador: null,
     estadoBateria: null,
-    
-    arranqueManual: null,
-    arranqueAutomatico: null,
     
     iaResult: null,
     observaciones: null,
@@ -218,32 +166,73 @@ export const mockInspecciones = [
     id: 'INS-2025-005',
     otId: 'OT-2025-005',
     fecha: '2025-10-16T11:00:00',
-    tecnico: 'Ana López',
-    cliente: 'Universidad Nacional',
-    sitio: 'Campus Heredia',
+    tecnico: 'Luis Hernández',
+    cliente: 'Cable & Wireless Panamá',
+    sitio: 'Torre Cerro Azul',
+    tipoEquipo: 'tower',
+    equipoDetalle: 'Torre autosoportada 60m',
     estado: 'completada',
     estadoEquipo: 'normal',
-    ubicacion: { latitude: 9.9981, longitude: -84.1169 },
-    duracion: 50,
+    ubicacion: { latitude: 9.2333, longitude: -79.3667 },
+    duracion: 65,
     
-    hodometro: 890,
-    marcaPlanta: 'FG Wilson',
-    modeloPlanta: 'P110',
-    marcaMotor: 'Perkins',
-    modeloMotor: '1106A-70TAG4',
-    capacidadKW: 110,
-    capacidadHP: 147,
+    hodometro: 2100,
+    marcaPlanta: 'Valmont',
+    modeloPlanta: 'STS-60',
+    altura: 60,
     
-    voltajeL1N: 111,
-    voltajeL2N: 109,
-    voltajeL1L2: 220,
+    inclinacion: 0.2,
+    tensionRetenidas: 'N/A',
+    estadoEstructura: 'Excelente',
+    corrosion: 'Ninguna',
+    
+    voltajeL1N: 119,
+    voltajeL2N: 121,
+    voltajeL1L2: 240,
     frecuencia: 60,
-    presionAceite: 62,
-    temperatura: 82,
     
-    voltageBatCargador: 13.9,
-    voltageBatSinCargador: 12.7,
-    estadoBateria: 'Bien',
+    iaResult: {
+      estado: 'normal',
+      alarmas: [],
+      reemplazos: [],
+      revisiones: ['Inspección visual periódica recomendada cada 4 meses']
+    },
+    
+    observaciones: 'Torre autosoportada en perfecto estado. Estructura nueva y bien mantenida.',
+    fotos: 4
+  },
+  {
+    id: 'INS-2025-006',
+    otId: 'OT-2025-006',
+    fecha: '2025-10-15T13:30:00',
+    tecnico: 'Carlos Rodríguez',
+    cliente: 'Claro Panamá',
+    sitio: 'Generador Respaldo Tocumen',
+    tipoEquipo: 'power',
+    equipoDetalle: 'Generador Diésel 150kW',
+    estado: 'completada',
+    estadoEquipo: 'normal',
+    ubicacion: { latitude: 9.0636, longitude: -79.3834 },
+    duracion: 45,
+    
+    hodometro: 8750,
+    marcaPlanta: 'Caterpillar',
+    modeloPlanta: 'C7.1',
+    capacidadKW: 150,
+    capacidadHP: 201,
+    
+    presionAceite: 55,
+    temperatura: 82,
+    nivelCombustible: 85,
+    
+    voltajeL1N: 277,
+    voltajeL2N: 276,
+    voltajeL1L2: 480,
+    frecuencia: 60,
+    
+    voltageBatCargador: 28.5,
+    voltageBatSinCargador: 27.2,
+    estadoBateria: 'Bueno',
     
     arranqueManual: 'Ok',
     arranqueAutomatico: 'Ok',
@@ -251,18 +240,93 @@ export const mockInspecciones = [
     iaResult: {
       estado: 'normal',
       alarmas: [],
-      reemplazos: [],
-      revisiones: ['Continuar programa de mantenimiento cada 250 horas']
+      reemplazos: ['Filtros de aceite y aire cambiados preventivamente'],
+      revisiones: ['Próximo servicio preventivo en 500 horas']
     },
     
-    observaciones: 'Equipo nuevo en excelente condiciones. Todas las pruebas exitosas.',
-    fotos: 4,
-    fotosUrls: [
-      'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80',
-      'https://images.unsplash.com/photo-1621905252472-8d0e15f7ebcc?w=800&q=80',
-      'https://images.unsplash.com/photo-1621905252868-b93c28c0567f?w=800&q=80',
-      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80'
-    ]
+    observaciones: 'Generador en excelente condición. Mantenimiento preventivo completado.',
+    fotos: 5
+  },
+  {
+    id: 'INS-2025-007',
+    otId: 'OT-2025-007',
+    fecha: '2025-10-14T10:15:00',
+    tecnico: 'María Gonzalez',
+    cliente: 'Digicel Panamá',
+    sitio: 'Aire Acondicionado Site Villa Zaita',
+    tipoEquipo: 'power',
+    equipoDetalle: 'Aire acondicionado de precisión',
+    estado: 'completada',
+    estadoEquipo: 'atencion',
+    ubicacion: { latitude: 9.1453, longitude: -79.5199 },
+    duracion: 40,
+    
+    hodometro: 15200,
+    marcaPlanta: 'Vertiv Liebert',
+    modeloPlanta: 'PDX-30',
+    capacidadBTU: 30000,
+    
+    temperaturaRetorno: 28,
+    temperaturaSalida: 16,
+    humedadRelativa: 55,
+    presionRefrigerante: 245,
+    corrienteCompresor: 18.5,
+    
+    voltajeL1N: 220,
+    voltajeL2N: 218,
+    voltajeL1L2: 438,
+    frecuencia: 60,
+    
+    iaResult: {
+      estado: 'atencion',
+      alarmas: ['Corriente del compresor ligeramente elevada'],
+      reemplazos: [],
+      revisiones: ['Verificar carga de refrigerante y limpiar condensador']
+    },
+    
+    observaciones: 'Sistema de enfriamiento funcional pero requiere mantenimiento. Condensador con acumulación de polvo.',
+    fotos: 3
+  },
+  {
+    id: 'INS-2025-008',
+    otId: 'OT-2025-008',
+    fecha: '2025-10-13T08:45:00',
+    tecnico: 'Roberto Castillo',
+    cliente: 'Tigo Panamá',
+    sitio: 'Radio Enlace Miraflores',
+    tipoEquipo: 'transmission',
+    equipoDetalle: 'Radio microondas punto a punto',
+    estado: 'completada',
+    estadoEquipo: 'normal',
+    ubicacion: { latitude: 9.0045, longitude: -79.4753 },
+    duracion: 50,
+    
+    hodometro: 4100,
+    marcaPlanta: 'Ceragon',
+    modeloPlanta: 'IP-50C',
+    frecuenciaBanda: '18 GHz',
+    capacidadMbps: 1000,
+    
+    potenciaTransmision: 20,
+    potenciaRecepcion: -45,
+    rsl: -45,
+    snr: 35,
+    ber: 0.000001,
+    
+    voltajeL1N: 48,
+    voltajeL2N: null,
+    voltajeL1L2: null,
+    frecuencia: null,
+    
+    iaResult: {
+      estado: 'normal',
+      alarmas: [],
+      reemplazos: [],
+      revisiones: ['Monitoreo mensual de nivel de señal']
+    },
+    
+    observaciones: 'Enlace de microondas operando óptimamente. Señal fuerte y estable.',
+    fotos: 4
   }
 ];
 

@@ -1,8 +1,10 @@
-import { Sun, Moon, Activity } from 'lucide-react';
+import { Sun, Moon, Activity, Settings } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -23,18 +25,32 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 sm:p-2.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors border border-gray-300 dark:border-gray-600 flex-shrink-0"
-            aria-label="Cambiar tema"
-          >
-            {theme === 'light' ? (
-              <Moon className="w-5 h-5 text-gray-700" />
-            ) : (
-              <Sun className="w-5 h-5 text-gray-300" />
-            )}
-          </button>
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            {/* Settings Button */}
+            <button
+              onClick={() => window.location.hash = 'settings'}
+              className="p-2 sm:p-2.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors border border-gray-300 dark:border-gray-600 flex-shrink-0"
+              aria-label={t('settings')}
+              title={t('settings')}
+            >
+              <Settings className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+            </button>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 sm:p-2.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors border border-gray-300 dark:border-gray-600 flex-shrink-0"
+              aria-label={t('darkMode')}
+              title={t('darkMode')}
+            >
+              {theme === 'light' ? (
+                <Moon className="w-5 h-5 text-gray-700" />
+              ) : (
+                <Sun className="w-5 h-5 text-gray-300" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </header>
